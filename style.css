@@ -1,0 +1,745 @@
+/* ==========================================================================
+   TEUTONIC VENTURES – style.css
+   
+   Aufbau:
+   1. Variables
+   2. Reset & Base
+   3. Utilities
+   4. Navigation
+   5. Hero
+   6. Core Areas
+   7. About (Split)
+   8. Services
+   9. Approach
+   10. International Banner
+   11. Projects
+   12. Contact
+   13. Footer
+   14. Responsive – Tablet
+   15. Responsive – Mobile
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. VARIABLES – Farben & Fonts zentral ändern
+   ========================================================================== */
+:root {
+  --color-black:    #0a0a0a;
+  --color-dark:     #111111;
+  --color-gray:     #1a1a1a;
+  --color-gray-mid: #999999;
+  --color-light:    #e8e8e8;
+  --color-white:    #ffffff;
+  --color-gold:     #c9a84c;
+  --color-gold-dim: #a68a3a;
+
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Outfit', Helvetica, Arial, sans-serif;
+
+  --max-width:    1200px;
+  --section-pad:  120px;
+  --section-pad-tablet: 80px;
+  --section-pad-mobile: 56px;
+}
+
+
+/* ==========================================================================
+   2. RESET & BASE
+   ========================================================================== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--color-light);
+  background-color: var(--color-black);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--color-gold);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-white);
+}
+
+
+/* ==========================================================================
+   3. UTILITIES
+   ========================================================================== */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.section {
+  padding: var(--section-pad) 0;
+}
+
+.section--dark {
+  background-color: var(--color-dark);
+}
+
+.section-label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 500;
+  color: var(--color-white);
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.section-text {
+  font-size: 1.05rem;
+  color: var(--color-gray-mid);
+  max-width: 680px;
+  line-height: 1.8;
+}
+
+.section-text + .section-text {
+  margin-top: 20px;
+}
+
+.gold-line {
+  width: 48px;
+  height: 2px;
+  background: var(--color-gold);
+  margin-bottom: 32px;
+}
+
+
+/* ==========================================================================
+   4. NAVIGATION
+   ========================================================================== */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(10, 10, 10, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+}
+
+.nav__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 110px;
+}
+
+.nav__logo {
+  display: flex;
+  align-items: center;
+}
+
+.nav__logo-img {
+  height: 130px;
+  width: auto;
+}
+
+.nav__links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav__links a {
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gray-mid);
+  transition: color 0.25s;
+}
+
+.nav__links a:hover {
+  color: var(--color-white);
+}
+
+.nav__toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.nav__toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-white);
+  margin: 5px 0;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+
+/* ==========================================================================
+   5. HERO
+   ========================================================================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-dark);
+  background-image: url('images/hero.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.6) 50%, transparent 100%),
+    linear-gradient(to top, rgba(10,10,10,1) 0%, transparent 40%);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 32px;
+  padding-top: 110px;
+}
+
+.hero__label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 24px;
+}
+
+.hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-weight: 500;
+  color: var(--color-white);
+  line-height: 1.1;
+  max-width: 740px;
+  margin-bottom: 32px;
+}
+
+.hero__sub {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--color-gray-mid);
+  max-width: 540px;
+  line-height: 1.8;
+  margin-bottom: 48px;
+}
+
+.hero__cta {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  border: 1px solid var(--color-gold);
+  padding: 14px 40px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.hero__cta:hover {
+  background: var(--color-gold);
+  color: var(--color-black);
+}
+
+
+/* ==========================================================================
+   6. CORE AREAS – 3-Spalten Grid
+   ========================================================================== */
+.core-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.core-card {
+  border: 1px solid rgba(201, 168, 76, 0.12);
+  padding: 44px 32px;
+  transition: border-color 0.3s;
+}
+
+.core-card:hover {
+  border-color: var(--color-gold);
+}
+
+.core-card__icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 24px;
+  color: var(--color-gold);
+}
+
+.core-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: 12px;
+}
+
+.core-card__text {
+  font-size: 0.95rem;
+  color: var(--color-gray-mid);
+  line-height: 1.7;
+}
+
+
+/* ==========================================================================
+   7. ABOUT – Split Layout
+   ========================================================================== */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.split--reverse {
+  direction: rtl;
+}
+
+.split--reverse > * {
+  direction: ltr;
+}
+
+.split__image {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background-color: var(--color-gray);
+  background-size: cover;
+  background-position: center;
+}
+
+
+/* ==========================================================================
+   8. SERVICES
+   ========================================================================== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.service-block {
+  padding: 40px 0;
+  border-top: 2px solid var(--color-gold);
+}
+
+.service-block__title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: 16px;
+}
+
+.service-block__text {
+  font-size: 0.95rem;
+  color: var(--color-gray-mid);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.service-block__list {
+  list-style: none;
+  padding: 0;
+}
+
+.service-block__list li {
+  font-size: 0.9rem;
+  color: var(--color-gray-mid);
+  padding: 7px 0;
+  padding-left: 18px;
+  position: relative;
+}
+
+.service-block__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 6px;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+
+/* ==========================================================================
+   9. APPROACH
+   ========================================================================== */
+.approach-points {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 48px;
+}
+
+.approach-point__number {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: 400;
+  color: rgba(201, 168, 76, 0.18);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.approach-point__title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: 10px;
+}
+
+.approach-point__text {
+  font-size: 0.9rem;
+  color: var(--color-gray-mid);
+  line-height: 1.7;
+}
+
+
+/* ==========================================================================
+   10. INTERNATIONAL BANNER – Bild mit Text-Overlay
+   ========================================================================== */
+.intl-banner {
+  position: relative;
+  padding: var(--section-pad) 0;
+  background-color: var(--color-gray);
+  background-image: url('images/international.jpg');
+  background-size: cover;
+  background-position: center 40%;
+  overflow: hidden;
+}
+
+.intl-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.7) 50%, rgba(10,10,10,0.3) 100%);
+}
+
+.intl-banner .container {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* ==========================================================================
+   11. PROJECTS – Bild-Karten
+   ========================================================================== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.project-card {
+  aspect-ratio: 3 / 4;
+  background-color: var(--color-gray);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.15) 50%, transparent 100%);
+}
+
+.project-card__label {
+  position: relative;
+  z-index: 1;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 8px;
+}
+
+.project-card__title {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+
+/* ==========================================================================
+   12. CONTACT
+   ========================================================================== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+  margin-top: 48px;
+}
+
+.contact-info__item {
+  margin-bottom: 36px;
+}
+
+.contact-info__label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 8px;
+}
+
+.contact-info__value {
+  font-size: 1.1rem;
+  color: var(--color-light);
+}
+
+.contact-info__value a {
+  color: var(--color-light);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+  padding-bottom: 2px;
+  transition: border-color 0.25s;
+}
+
+.contact-info__value a:hover {
+  border-color: var(--color-gold);
+}
+
+.contact-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: var(--color-gray);
+  background-size: cover;
+  background-position: center;
+}
+
+
+/* ==========================================================================
+   13. FOOTER
+   ========================================================================== */
+.footer {
+  padding: 48px 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__logo {
+  display: flex;
+  align-items: center;
+}
+
+.footer__logo-img {
+  height: 36px;
+  width: auto;
+  opacity: 0.4;
+  transition: opacity 0.3s;
+}
+
+.footer__logo:hover .footer__logo-img {
+  opacity: 0.7;
+}
+
+.footer__copy {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.3);
+}
+
+.footer__back {
+  font-size: 0.8rem;
+  color: var(--color-gray-mid);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.25s;
+}
+
+.footer__back:hover {
+  color: var(--color-gold);
+}
+
+
+/* ==========================================================================
+   14. RESPONSIVE – Tablet (max 960px)
+   ========================================================================== */
+@media (max-width: 960px) {
+  .section {
+    padding: var(--section-pad-tablet) 0;
+  }
+
+  .intl-banner {
+    padding: var(--section-pad-tablet) 0;
+  }
+
+  /* 3 Spalten → 2 Spalten */
+  .core-grid,
+  .services-grid,
+  .approach-points,
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .split {
+    gap: 40px;
+  }
+
+  .contact-grid {
+    gap: 40px;
+  }
+}
+
+
+/* ==========================================================================
+   15. RESPONSIVE – Mobile (max 640px)
+   ========================================================================== */
+@media (max-width: 640px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .section {
+    padding: var(--section-pad-mobile) 0;
+  }
+
+  .intl-banner {
+    padding: var(--section-pad-mobile) 0;
+  }
+
+  .intl-banner::before {
+    background: rgba(10,10,10,0.85);
+  }
+
+  /* Alles einspaltig */
+  .core-grid,
+  .services-grid,
+  .approach-points,
+  .projects-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .split {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .split--reverse {
+    direction: ltr;
+  }
+
+  .split__image {
+    aspect-ratio: 16 / 9;
+    order: -1;
+  }
+
+  .hero__title {
+    font-size: 2rem;
+  }
+
+  .hero__sub {
+    font-size: 1rem;
+  }
+
+  /* Mobile Navigation */
+  .nav__links {
+    display: none;
+    position: absolute;
+    top: 110px;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.98);
+    flex-direction: column;
+    padding: 24px 32px;
+    gap: 20px;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+  }
+
+  .nav__links.active {
+    display: flex;
+  }
+
+  .nav__toggle {
+    display: block;
+  }
+
+  .project-card {
+    aspect-ratio: 16 / 9;
+  }
+
+  .footer__inner {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .footer__logo-img {
+    height: 28px;
+  }
+}
